@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiagramType id="Graph Diagram" xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd">
+    <Icon path="icons/icon.png" />
+    <Domain id="graph_diagram" identity="name" />
+    <Special swimlines="0" lifelines="0" />
+    <Elements>
+        <Item value="Vertex" />
+    </Elements>
+    <Connections>
+        <Item value="Edge" />
+        <Item value="Arc" />
+    </Connections>
+</DiagramType>

@@ -1,0 +1,10 @@
+<ConnectionType xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd" id="Edge">
+    <Icon path="icons/relationship.png"/>
+    <Domain id="edge"/>
+    <Appearance>
+        <ConnectionLine style="solid" color="##000000" />
+        <Label position="center">
+            <TextBox text="#self.value" />
+        </Label>
+    </Appearance>
+</ConnectionType>

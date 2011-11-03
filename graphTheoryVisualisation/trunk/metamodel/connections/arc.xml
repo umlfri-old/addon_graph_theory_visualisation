@@ -1,0 +1,11 @@
+<ConnectionType xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd" id="Arc">
+    <Icon path="icons/arc.png"/>
+    <Domain id="arc"/>
+    <Appearance>
+        <ConnectionLine style="solid" color="##000000" />
+        <ConnectionArrow index="-1" style="simple_arrow" size="20" color="##000000"/>
+        <Label position="center">
+            <TextBox text="#self.value" />
+        </Label>
+    </Appearance>
+</ConnectionType>
