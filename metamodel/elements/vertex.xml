@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ElementType id="Vertex" xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd">
+    <Icon path="icons/circle.png" />
+    <Domain id="vertex" identity="name" />
+    <Connections>
+        <Item value="Edge" allowrecursive="1"/>
+        <Item value="Arc" allowrecursive="1"/>
+    </Connections>
+    <Appearance>
+        <Sizer width="40" height="40">
+            <Ellipse border="##000000" fill="##FFFFFF">
+                <Align align="center center">
+                    <TextBox text="#self.name" />
+                </Align>
+            </Ellipse>
+        </Sizer>
+    </Appearance>
+</ElementType>
