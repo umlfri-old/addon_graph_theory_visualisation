@@ -7,12 +7,15 @@
         <Item value="Arc" allowrecursive="1"/>
     </Connections>
     <Appearance>
-        <Sizer width="40" height="40">
-            <Ellipse border="##000000" fill="##FFFFFF">
-                <Align align="center center">
-                    <TextBox text="#self.name" />
-                </Align>
-            </Ellipse>
-        </Sizer>
+        <VBox>
+            <Sizer width="40" height="40">
+                <Ellipse border="#self.farba" fill="##FFFFFF" >
+                    <Align align="center center">
+                        <TextBox text="#self.name" color="#self.farba"/>
+                    </Align>
+                </Ellipse>
+            </Sizer>
+            <TextBox text="#self.result"/>
+        </VBox>
     </Appearance>
 </ElementType>

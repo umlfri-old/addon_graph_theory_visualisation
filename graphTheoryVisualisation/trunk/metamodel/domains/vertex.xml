@@ -2,4 +2,10 @@
     <Attribute id="name" name="Name">
 		<Str />
 	</Attribute>
+    <Attribute id="result" name="Result" hidden="true">
+        <Str />
+    </Attribute>
+    <Attribute id="farba" name="Farba">
+        <Color default="#000000" />
+    </Attribute>
 </Domain>

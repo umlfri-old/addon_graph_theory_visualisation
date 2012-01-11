@@ -2,4 +2,7 @@
     <Attribute id="value" name="Value">
         <Str />
     </Attribute>
+    <Attribute id="farba" name="Farba">
+        <Color default="#000000" />
+    </Attribute>
 </Domain>

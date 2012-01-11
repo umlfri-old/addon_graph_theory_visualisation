@@ -3,7 +3,7 @@
     <Identity uri="urn:umlfri.org:metamodel:graphTheoryVisualisation" />
     <Identity uri="http://umlfri.kst.fri.uniza.sk/metamodel/uml.frim" /> <!-- Only for compatibility with old save files -->
     
-    <FriendlyName name="UML 1.4" version="0.1" />
+    <FriendlyName name="Graph Theory Visualisation" version="0.1" />
     <Author>
         <Name name="UML .FRI team" />
         <Homepage url="http://umlfri.org" />
@@ -14,10 +14,18 @@
     <Icon path="icons/icon.png" />
     <Description>
     </Description>
-    
-    <Metamodel>
-        <Path path="metamodel" />
-        
-        <Template path="templates/empty.fritx" name="Empty graph theory diagram" />
-    </Metamodel>
+
+    <Dependencies>
+        <AddOn uri="urn:umlfri.org:starters:python" />
+    </Dependencies>
+
+    <Composite>
+        <Metamodel>
+            <Path path="metamodel" />
+            <Template path="templates/empty.fritx" name="Empty Graph Theory Diagram" />
+        </Metamodel>
+        <Plugin>
+            <Code os="all" language="pythonNew" path="plugin" />
+        </Plugin>
+    </Composite>
 </AddOn>
