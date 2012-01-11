@@ -2,8 +2,8 @@
     <Icon path="icons/arc.png"/>
     <Domain id="arc"/>
     <Appearance>
-        <ConnectionLine style="solid" color="##000000" />
-        <ConnectionArrow index="-1" style="simple_arrow" size="20" color="##000000"/>
+        <ConnectionLine style="solid" color="#self.farba" />
+        <ConnectionArrow index="-1" style="simple_arrow" size="20" color="#self.farba"/>
         <Label position="center">
             <TextBox text="#self.value" />
         </Label>

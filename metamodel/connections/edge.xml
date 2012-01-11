@@ -2,7 +2,7 @@
     <Icon path="icons/relationship.png"/>
     <Domain id="edge"/>
     <Appearance>
-        <ConnectionLine style="solid" color="##000000" />
+        <ConnectionLine style="solid" color="#self.farba" />
         <Label position="center">
             <TextBox text="#self.value" />
         </Label>
