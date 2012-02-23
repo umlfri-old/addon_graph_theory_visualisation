@@ -2,7 +2,7 @@
     <Attribute id="value" name="Value">
         <Str />
     </Attribute>
-    <Attribute id="farba" name="Farba">
+    <Attribute id="farba" name="Farba" hidden="true">
         <Color default="#000000" />
     </Attribute>
 </Domain>

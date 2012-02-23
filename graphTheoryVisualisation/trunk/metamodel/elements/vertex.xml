@@ -9,9 +9,9 @@
     <Appearance>
         <VBox>
             <Sizer width="40" height="40">
-                <Ellipse border="#self.farba" fill="##FFFFFF" >
+                <Ellipse border="#self.farbaBorder" fill="#self.farba">
                     <Align align="center center">
-                        <TextBox text="#self.name" color="#self.farba"/>
+                        <TextBox text="#self.name" color="##000000"/>
                     </Align>
                 </Ellipse>
             </Sizer>

@@ -2,7 +2,7 @@
     <Icon path="icons/arc.png"/>
     <Domain id="arc"/>
     <Appearance>
-        <ConnectionLine style="solid" color="#self.farba" />
+        <ConnectionLine style="solid" width="2" color="#self.farba" />
         <ConnectionArrow index="-1" style="simple_arrow" size="20" color="#self.farba"/>
         <Label position="center">
             <TextBox text="#self.value" />
