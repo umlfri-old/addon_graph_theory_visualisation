@@ -2,9 +2,30 @@
     <Icon path="icons/relationship.png"/>
     <Domain id="edge"/>
     <Appearance>
-        <ConnectionLine style="solid" color="#self.farba" />
-        <Label position="center">
-            <TextBox text="#self.value" />
+        <ConnectionLine style="solid" width="2" color="#self.farba" />
+        <Condition condition="#self.arrowBegin">
+            <ConnectionArrow index="0" style="simple_arrow" size="20" color="#self.farbaBegin" />
+        </Condition>
+        <Condition condition="#self.arrowEnd">
+            <ConnectionArrow index="-1" style="simple_arrow" size="20" color="#self.farbaEnd"/>
+        </Condition>
+        <Label position="destination">
+            <Sizer maxwidth="10" minheight="50">
+                <HBox>
+                    <Align align="top">
+                        <TextBox text="#self.valueD" font="Arial 20" />
+                    </Align>
+                </HBox>
+            </Sizer>
+        </Label>
+        <Label position="source">
+            <Sizer maxwidth="10" minheight="50">
+                <HBox>
+                    <Align align="top">
+                        <TextBox text="#self.valueS" font="Arial 20" />
+                    </Align>
+                </HBox>
+            </Sizer>
         </Label>
     </Appearance>
 </ConnectionType>

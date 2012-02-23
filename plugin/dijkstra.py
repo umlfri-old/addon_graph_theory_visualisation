@@ -1,17 +1,14 @@
 #!/usr/bin/python
+from basic import basic
 
-class dijkstra:
+class dijkstra(basic):
 
-    def __init__(self, interface):
-        self.aInterface = interface
-        self.aInf = float("inf")
-        self.aStep1 = False
+    def __init__(self, interface, buttonMenu, initialNode, endNode):
+        self.aEndNode = endNode
+        basic.__init__(self, interface, buttonMenu, initialNode)
+
 
     def step1(self):
-        self.aEndNode = 4
-        self.aInitialNode = 3
-        self.aNodes = list(self.aInterface.current_diagram.elements)
-        self.aConnections = list(self.aInterface.current_diagram.connections)
         self.aFinalValue = 0
         self.aSize = len(self.aNodes)
         self.aTentativeDistance = []*self.aSize
@@ -21,12 +18,8 @@ class dijkstra:
             self.aTentativeDistance.append(self.aInf)
             self.aPreviousNode.append(0)
             self.aVisited.append(False)
-        self.aCurrentNode = self.aInitialNode
         self.aTentativeDistance[self.aInitialNode - 1] = 0
         self.aVisited[self.aInitialNode - 1] = True
-        self.aStep1 = True
-        self.aStep2 = False
-        self.aStep3  = True
         self.aUnmarkedConnections = list(self.aConnections)
         self.aLastUnmarkedConnections = []*len(self.aConnections)
         self.aMarkedConnections = []*len(self.aConnections)
@@ -34,8 +27,18 @@ class dijkstra:
         self.aDistanceChanges = []*len(self.aConnections)
         self.aShortestConnections = []*len(self.aConnections)
         self.aBlackenedConnections = []*len(self.aConnections)
+        self.aColoredNodes = []*len(self.aNodes)
+        self.aColoredNodes.append(self.aInitialNode)
         self.aSteps = []*(len(self.aConnections)*2)
-        self.aSteps.append(1)
+        if self.aNodes[self.aInitialNode - 1].object.values['farba'] == "#FFFFFF":
+            self.aNodes[self.aInitialNode - 1].object.values['farba'] = "#FF0000"
+            self.aNodes[self.aInitialNode - 1].object.values['farbaBorder'] = "#00FF00"
+            self.aSteps.append(1)
+            self.aStep1 = True
+        else:
+            self.aNodes[self.aInitialNode - 1].object.values['farba'] = "#FFFFFF"
+            self.aNodes[self.aInitialNode - 1].object.values['farbaBorder'] = "#000000"
+            self.aStep1 = False
 
     def step2(self):
         change = False
@@ -49,7 +52,7 @@ class dijkstra:
                     self.aPreviousNode[int(con.object.destination.name) - 1] = self.aCurrentNode
                     self.aResultChanges.append(self.aNodes[int(con.object.destination.name) - 1].object.values['result'])
                     self.aNodes[int(con.object.destination.name) - 1].object.values['result'] = str(self.aTentativeDistance[int(con.object.destination.name) - 1]) + "|" + str(self.aCurrentNode)
-                    con.object.values['farba'] = "#0044FF"
+                    con.object.values['farba'] = "#0000FF"
                     self.aLastUnmarkedConnections.append(list(self.aUnmarkedConnections))
                     self.aUnmarkedConnections.remove(con)
                     self.aMarkedConnections.append(con)
@@ -82,12 +85,20 @@ class dijkstra:
                 self.aShortestConnections.append(con)
 
         for con in self.aConnections:
-            if self.aIndexFinal + 1 == int(con.object.destination.name) and con.object.values['farba'] == "#0044FF":
+            if self.aIndexFinal + 1 == int(con.object.destination.name) and con.object.values['farba'] == "#0000FF":
                 con.object.values['farba'] = "#000000"
                 self.aBlackenedConnections.append(con)
 
         self.aVisited[self.aIndexFinal] = True
+        self.aNodes[self.aCurrentNode - 1].object.values['farba'] = "#00FF00"
         self.aCurrentNode = self.aIndexFinal + 1
+        self.aColoredNodes.append(self.aCurrentNode)
+        if self.aCurrentNode != self.aEndNode:
+            self.aNodes[self.aCurrentNode - 1].object.values['farba'] = "#FF0000"
+            self.aNodes[self.aCurrentNode - 1].object.values['farbaBorder'] = "#00FF00"
+        else:
+            self.aNodes[self.aCurrentNode - 1].object.values['farba'] = "#00FF00"
+            self.aNodes[self.aCurrentNode - 1].object.values['farbaBorder'] = "#00FF00"
         self.aFinalValue = self.aTentativeDistance[self.aIndexFinal]
         self.aStep3 = True
         self.aStep2 = False
@@ -112,12 +123,16 @@ class dijkstra:
     def step3back(self):
         shortestConnection = self.aShortestConnections[-1]
         del self.aShortestConnections[-1]
-        self.aCurrentNode = int(shortestConnection.object.source.name)
-        shortestConnection.object.values['farba'] = "#0044FF"
+        del self.aColoredNodes[-1]
+        self.aNodes[int(shortestConnection.object.destination.name) - 1].object.values['farbaBorder'] = "#000000"
+        self.aNodes[int(shortestConnection.object.destination.name) - 1].object.values['farba'] = "#FFFFFF"
+        self.aNodes[self.aColoredNodes[-1] - 1].object.values['farba'] = "#FF0000"
+        self.aCurrentNode = int(self.aNodes[self.aColoredNodes[-1] - 1].object.values['name'])
+        shortestConnection.object.values['farba'] = "#0000FF"
         if self.aBlackenedConnections:
             con = self.aBlackenedConnections[-1]
             while con.object.destination.name == shortestConnection.object.destination.name and self.aBlackenedConnections:
-                con.object.values['farba'] = "#0044FF"
+                con.object.values['farba'] = "#0000FF"
                 del self.aBlackenedConnections[-1]
                 if self.aBlackenedConnections:
                     con = self.aBlackenedConnections[-1]
@@ -139,7 +154,8 @@ class dijkstra:
     def forward(self):
         if not self.aStep1:
             self.step1()
-        if self.aCurrentNode != self.aEndNode:
+
+        elif self.aCurrentNode != self.aEndNode:
             if not self.aStep2:
                 self.step2()
             elif not self.aStep3:
@@ -150,15 +166,7 @@ class dijkstra:
             print self.aTentativeDistance
 
     def play(self):
-        if not self.aStep1:
-            self.step1()
-            
-        while self.aCurrentNode != self.aEndNode:
-            if not self.aStep2:
-                self.step2()
-            elif not self.aStep3:
-                self.step3()
-                
+        basic.play(self)
         print self.aFinalValue
         print self.aPreviousNode
         print self.aTentativeDistance

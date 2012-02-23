@@ -1,8 +1,23 @@
 <Domain id="edge" xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd" >
-    <Attribute id="value" name="Value">
+    <Attribute id="valueD" name="ValueD">
+        <Str />
+    </Attribute>
+    <Attribute id="valueS" name="ValueS">
         <Str />
     </Attribute>
     <Attribute id="farba" name="Farba" hidden="true">
         <Color default="#000000" />
+    </Attribute>
+    <Attribute id="farbaBegin" name="FarbaBegin" hidden="true">
+        <Color default="#000000" />
+    </Attribute>
+    <Attribute id="farbaEnd" name="FarbaEnd" hidden="true">
+        <Color default="#000000" />
+    </Attribute>
+    <Attribute id="arrowBegin" name="ArrowBegin" hidden="true">
+        <Bool default="False" />
+    </Attribute>
+    <Attribute id="arrowEnd" name="ArrowEnd" hidden="true">
+        <Bool default="False" />
     </Attribute>
 </Domain>
