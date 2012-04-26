@@ -2,27 +2,41 @@
 
 class connection:
 
-    def __init__(self, paConnection):
+    def __init__(self, paConnection, paSetValue):
         self.__aConnection = paConnection
         self.__aSource = int(paConnection.object.source.name)
         self.__aDestination = int(paConnection.object.destination.name)
         self.__aDirectionS_D = False
         self.__aDirectionD_S = False
+        if self.__aSource < self.__aDestination:
+            self.__aLowerNode = self.__aSource
+            self.__aHigherNode = self.__aDestination
+        else:
+            self.__aLowerNode = self.__aDestination
+            self.__aHigherNode = self.__aSource
+        if paSetValue:
+            self.__aValue = int(self.__aConnection.object.values['value'])
+        else:
+            self.__aValue = ""
         self.__aTarget = 0
+        self.__aIndex = 0
 
-    def returnConnection(self):
+    def getConnection(self):
         return self.__aConnection
 
-    def returnSource(self):
+    def getValue(self):
+        return self.__aValue
+
+    def getSource(self):
         return self.__aSource
 
-    def returnDestination(self):
+    def getDestination(self):
         return self.__aDestination
 
-    def returnDirectionS_D(self):
+    def getDirectionS_D(self):
         return self.__aDirectionS_D
 
-    def returnDirectionD_S(self):
+    def getDirectionD_S(self):
         return self.__aDirectionD_S
 
     def setDirectionS_D(self, paValue):
@@ -32,10 +46,22 @@ class connection:
         self.__aDirectionD_S = paValue
 
     def setTarget(self, paTarget):
-        if paTarget:
+        if paTarget == "s":
             self.__aTarget = self.__aSource
         else:
             self.__aTarget = self.__aDestination
 
-    def returnTarget(self):
+    def getLower(self):
+        return self.__aLowerNode
+
+    def getHigher(self):
+        return self.__aHigherNode
+
+    def getTarget(self):
         return self.__aTarget
+
+    def setIndex(self, paIndex):
+        self.__aIndex = paIndex
+
+    def getIndex(self):
+        return self.__aIndex

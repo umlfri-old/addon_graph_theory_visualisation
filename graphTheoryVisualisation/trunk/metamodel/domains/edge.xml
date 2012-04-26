@@ -1,8 +1,14 @@
 <Domain id="edge" xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd" >
-    <Attribute id="valueD" name="ValueD">
+    <Attribute id="value" name="Value">
         <Str />
     </Attribute>
-    <Attribute id="valueS" name="ValueS">
+    <Attribute id="lineWidth" name="LineWidth" hidden="true">
+        <Int default="2" />
+    </Attribute>
+    <Attribute id="valueD" name="ValueD" hidden="true">
+        <Str />
+    </Attribute>
+    <Attribute id="valueS" name="ValueS" hidden="true">
         <Str />
     </Attribute>
     <Attribute id="farba" name="Farba" hidden="true">
