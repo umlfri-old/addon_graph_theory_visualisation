@@ -88,6 +88,7 @@ class Dijkstra():
             self.__aNodes[self.__aInitialNode - 1].object.values['result'] = ""
             self.__aData = list(self.__aList.getLastData())
             self.__aList.deleteData()
+            self.__aCurrentNode = self.__aInitialNode
             self.__aStep1 = False
 
     def step2(self):
@@ -120,7 +121,6 @@ class Dijkstra():
                 self.step3()
 
     def step3(self):
-        self.__aSteps.append(3)
         self.__aIndexTD = 0
         self.__aValueTD = self.__aInf
         for temporary in self.__aVisited:
@@ -164,6 +164,7 @@ class Dijkstra():
                 self.__aData[i] = ""
             self.__aList.appendData(self.__aData)
         self.__aFinalValue = self.__aTentativeDistance[self.__aIndexFinal]
+        self.__aSteps.append(3)
         self.__aStep3 = True
         self.__aStep2 = False
 
@@ -238,15 +239,19 @@ class Dijkstra():
             if not self.__aButtonMenu[0].enabled:
                 for i in range(0,4):
                     self.__aButtonMenu[i].enabled = True
+            return False
 
     def forward(self):
-        if not self.__aStep1:
-            self.step1()
-        elif self.__aCurrentNode != self.__aEndNode:
-            if not self.__aStep2:
-                self.step2()
-            elif not self.__aStep3:
-                self.step3()
+        try:
+            if not self.__aStep1 or not self.__aSteps:
+                self.step1()
+            elif self.__aCurrentNode != self.__aEndNode:
+                if not self.__aStep2:
+                    self.step2()
+                elif not self.__aStep3:
+                    self.step3()
+        except AttributeError:
+            self.__aCurrentNode = self.__aEndNode
 
     def toggleList(self):
         if self.__aList.getVisibility():

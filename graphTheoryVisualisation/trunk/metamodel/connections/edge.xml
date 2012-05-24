@@ -1,5 +1,5 @@
 <ConnectionType xmlns="http://umlfri.kst.fri.uniza.sk/xmlschema/metamodel.xsd" id="Edge">
-    <Icon path="icons/relationship.png"/>
+    <Icon path="icons/edge.png"/>
     <Domain id="edge"/>
     <Appearance>
         <ConnectionLine style="solid" width="#self.lineWidth" color="#self.farba" />

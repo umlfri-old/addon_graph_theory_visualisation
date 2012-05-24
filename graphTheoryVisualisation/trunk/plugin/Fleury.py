@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from connection import connection
-import messegeWindow
+import messageWindow
 import gobject
 
 class Fleury:
@@ -21,10 +21,11 @@ class Fleury:
                 self.__aInitialCon.append(self.__aConnections[-1])
 
         self.reset()
+        
         for node in self.__aNodes:
             if  len(list(node.connections))%2 != 0 or len(list(node.connections)) == 0:
                 del self
-                messegeWindow.MessegeWindow("Fleury algorithm error", "Fleury algorithm can be only runned if all of vertecies \nhave an even degre!")
+                messageWindow.MessageWindow("Fleury algorithm error", "Fleury algorithm can be only runned if all of vertecies \nhave an even degree!")
 
     def reset(self):
         self.__aEulerianPath = []
@@ -39,6 +40,7 @@ class Fleury:
                 con.getConnection().object.values['farba'] = "000000"
                 con.getConnection().object.values['arrowBegin'] = False
                 con.getConnection().object.values['arrowEnd'] = False
+                con.setIndex(0)
 
     def backward(self):
         if self.__aEulerianPath:

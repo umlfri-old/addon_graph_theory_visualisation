@@ -17,6 +17,7 @@ class BasicTarryLabyrint:
         for con in self._aInterface.current_diagram.connections:
             self._aConnections.append(connection(con, False))
 
+    #resetBasic resets attributes, dynamically changing during visualisation to their default values.
     def resetBasic(self):
         self._aCurrentNode = self._aInitialNode
         self._aEnd = False
@@ -53,12 +54,14 @@ class BasicTarryLabyrint:
         self._aData[1 + self._aLenCon + self._aCurrentNode] = ""
         self._aStepNo = 1
 
+    #Repeatedly calls method playForwardBasic in constant time intervals. Its creates illusion of playing algorithm.
     def playBasic(self):
         for i in range(0,4):
             self._aButtonMenu[i].enabled = False
 
         gobject.timeout_add(self._aSpeed, self.playForwardBasic)
 
+    #Method for step forward. Returns true if method forwardBasic was successfully runned.
     def playForwardBasic(self):
         if not self._aEnd:
             self.forwardBasic()
@@ -105,6 +108,7 @@ class BasicTarryLabyrint:
         self._aBestCon = None
         self._aLowestNode = float('inf')
 
+    #Mark edges according to connection type and others optional parameters.
     def markEdge(self, type, *arg):
         if arg:
             self._aBestCon.getConnection().object.values[arg[0]] = arg[1]
@@ -123,6 +127,7 @@ class BasicTarryLabyrint:
         if self._aSequence:
             self._aCurrentNode = self._aSequence[-1]
 
+    #Hides or shows data table.
     def toggleList(self):
         if self._aList.getVisibility():
             self._aList.hide()

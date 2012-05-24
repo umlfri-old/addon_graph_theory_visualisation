@@ -2,7 +2,7 @@
 
 import gtk
 
-class MessegeWindow(gtk.Window):
+class MessageWindow(gtk.Window):
     def __init__(self, message, text, title = "Error", parent=None):
         gtk.Window.__init__(self)
         dialog = gtk.MessageDialog(

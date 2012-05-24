@@ -1,12 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import messageWindow
 from basicTarryLabyrint import BasicTarryLabyrint
 
 class Labyrint(BasicTarryLabyrint):
     def __init__(self, paInterface, paButtonMenu, paInitialNode, paSpeed):
         BasicTarryLabyrint.__init__(self, paInterface, paButtonMenu, paInitialNode, paSpeed)
         self.reset()
+        for node in self._aInterface.current_diagram.elements:
+            if  len(list(node.connections))%2 != 0 or len(list(node.connections)) == 0:
+                del self
+                messageWindow.MessageWindow("Labyrint algorithm error", "Labyrint algorithm can be only runned if all of vertecies \nhave an even degree!")
 
     def reset(self):
         for con in self._aConnections:

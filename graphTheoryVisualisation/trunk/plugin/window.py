@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import gtk
-import messegeWindow
+import messageWindow
 import os.path
 
 class Window:
@@ -99,7 +99,7 @@ class Window:
             self.__aPlugin.ok()
             self.__aWindow.hide()
         else:
-            messegeWindow.MessegeWindow("Value error", "All fields must be filled!")
+            messageWindow.MessageWindow("Value error", "All fields must be filled!")
 
 
     def getEntry1(self):
