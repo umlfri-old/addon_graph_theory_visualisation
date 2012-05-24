@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+#Class connection is wrapper class for metamodel's connection type.
+#It stores its basic values and some additional values for differnt algorithms.
+
 class connection:
 
     def __init__(self, paConnection, paSetValue):

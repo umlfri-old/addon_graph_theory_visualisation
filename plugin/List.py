@@ -57,7 +57,6 @@ class PyApp(gtk.Window):
     def appendColoredData(self, paData):
         self.__aStore.append(paData + ["red"])
         self.__aList.append(paData)
-        #self.rendererText.set_property('background', None)
 
     def deleteData(self):
         self.__aStore.remove(self.__aStore[-1].iter)
