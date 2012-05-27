@@ -1,11 +1,10 @@
 <?xml version="1.0" ?>
 <AddOn xmlns="http://umlfri.org/xmlschema/addon.xsd">
     <Identity uri="urn:umlfri.org:metamodel:graphTheoryVisualisation" />
-    <Identity uri="http://umlfri.kst.fri.uniza.sk/metamodel/uml.frim" /> <!-- Only for compatibility with old save files -->
     
     <FriendlyName name="Graph Theory Visualisation" version="0.1" />
     <Author>
-        <Name name="UML .FRI team" />
+        <Name name="Martin Lokaj" />
         <Homepage url="http://umlfri.org" />
         
         <CommonLicense name="GPL-2" />
