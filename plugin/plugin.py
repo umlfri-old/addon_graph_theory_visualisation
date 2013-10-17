@@ -12,7 +12,7 @@ import fileManager
 import os.path
 from org.umlfri.api.mainLoops import GtkMainLoop
 
-class pluginMain:
+class pluginMain(object):
 
     def __init__(self, interface):
         self.__aInterface = interface
@@ -50,6 +50,7 @@ class pluginMain:
                     pass
                 self.__aAlgorithm = None
         else:
+            self.__aInterface.remove_notification('add-element', self.rename)
             try:
                 for button in self.__aButtonMenu:
                     button.visible = False
